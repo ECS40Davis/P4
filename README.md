@@ -21,14 +21,14 @@ Outline:
 - Plane class:
  - class variable: static const double jet_fuel_cost 3.39
  - class method: overloaded operator <<
- - setPlane() [user inputs plane data]
- - getName() [best plane]
- - fuelCost() [from the distance, calculate fuel needed and cost]
- - totalAttendants [from the data file (possible passengers in a planes), determine how many flight attendants needed, return int]
- - totalPilots() [from the data file (number of planes), determine how many pilots needed, return int]
- - attendantsCost() [from totalAttendants, calculate cost in dollars to have them]
- - pilotsCost() [from totalPilots, calculate cost in dollars to have them]
- - maintenanceCost() [.0025% * aircraftPrice * hours]
+ - class method: setPlane() [user inputs plane data]
+ - class method: getName() [best plane]
+ - class method: fuelCost() [from the distance, calculate fuel needed and cost]
+ - class method: totalAttendants [from the data file (possible passengers in a planes), determine how many flight attendants needed, return int]
+ - class method: totalPilots() [from the data file (number of planes), determine how many pilots needed, return int]
+ - class method: attendantsCost() [from totalAttendants, calculate cost in dollars to have them]
+ - class method: pilotsCost() [from totalPilots, calculate cost in dollars to have them]
+ - class method: maintenanceCost() [.0025% * aircraftPrice * hours]
 
 Progress:
 - Created Outline

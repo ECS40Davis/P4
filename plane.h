@@ -6,6 +6,7 @@ using namespace std;
 
 class Plane
 {
+private:
   // planes.dat Format
   char name[12];
   int passengers;

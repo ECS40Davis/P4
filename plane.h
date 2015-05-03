@@ -18,12 +18,14 @@ private:
   // Calculating Cost
   static const double jetFuelPrice;
   
-  double flightTime(const int miles)const; // single trip
-  int numTrips(const int miles); // number of trips
-  double fuelCost(const int miles, const int trips)const; // x trips
-  double attendantCost(const int passengers, const double hours; int trips)const; // x trips
-  double pilotCost(const int trips)const; // x trips
-  double maintenanceCost(const int miles, const double hours)const; // x trips
+  double calcFlightTime(const int miles)const; // single trip
+  int calcNumTrips(const int miles); // number of trips
+  double calcFuelCost(const int miles, const int trips)const; // x trips
+  int calcNumAttendants(); // single trip
+  double calcAttendantCost(const int passengers, const double hours; int trips)const; // x trips
+  int calcNumPilots(); // single trip
+  double calcPilotCost(const int trips)const; // x trips
+  double calcMaintenanceCost(const int miles, const double hours)const; // x trips
 
 public:
   Plane(); // default plane

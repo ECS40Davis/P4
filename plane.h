@@ -19,6 +19,7 @@ private:
   static const double jetFuelPrice;
   
   double flightTime(const int miles)const; // single trip
+  int numTrips(const int miles); // number of trips
   double fuelCost(const int miles, const int trips)const; // x trips
   double attendantCost(const int passengers, const double hours; int trips)const; // x trips
   double pilotCost(const int trips)const; // x trips

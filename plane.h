@@ -33,7 +33,7 @@ public:
   void readPlane(); // reads in a plane
   friend ostream & operator << (ostream& os; const Plane &rhs); // displayPlaneInformation()
   void addPlaneInformation(); // addPlaneInformation()
-  double totalCost(const int passengers, const int miles); // x trips determineBestPlane()
+  double calcTotalCost(const int passengers, const int miles); // x trips determineBestPlane()
   const char* getName(const Plane &plane)const; // determineBestPlane()
 }; // class Plane
 

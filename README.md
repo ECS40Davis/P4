@@ -37,6 +37,7 @@ Outline:
 Progress:
 - Created Outline
 - Created Plane Stubs
+- plane.ccp and .h are debugged so they can compile but are not tested
 
 To do:
 - Create Vector Stubs

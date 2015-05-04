@@ -32,7 +32,7 @@ void Plane::readPlane() // reads in a plane
 } // readPlane()
 
 
-friend ostream& Plane::operator<< (ostream& os; const Plane &rhs) // displayPlaneInformation()
+ostream& operator<< (ostream& os, const Plane &rhs) // displayPlaneInformation()
 {
   
 } // operator<<
@@ -44,15 +44,15 @@ void addPlaneInformation() // addPlaneInformation() ????????????????????????????
 } // addPlaneInformation() 
 
 
-double Plane::calcTotalCost(const int passengers, const int miles) // x trips determineBestPlane()
+double Plane::calcTotalCost(const int passengrs, const int miles) // x trips determineBestPlane()
 {
   double hours = calcFlightTime(miles);
   int trips = calcNumTrips(miles);
   double fuelCost =  calcFuelCost(miles, trips); 
-  double attendantCost = calcAttendantCost(hours, trips);
-  double pilotCost = calcPilotCost(trips);
+  double attendantCost = calcAttendantCost(ceil(hours), trips);
+  double pilotCost = calcPilotCost(ceil(hours), trips);
   double maintenanceCost = calcMaintenanceCost(hours, trips);
-  return fuelCost + attendantCost + pilotCost + maintenceCost;
+  return fuelCost + attendantCost + pilotCost + maintenanceCost;
 } // CalcTotalCost()
 
 
@@ -62,7 +62,7 @@ double Plane::calcFlightTime(const int miles)const // single trip
 } // calcFlightTime()
 
 
-int calcNumTrips(const int miles) // total number of trips
+int Plane::calcNumTrips(const int miles) // total number of trips
 {
   return ceil(miles / range); // trips = totalMiles / planeMiles
 } // calcNumTrips()
@@ -75,20 +75,26 @@ double Plane::calcFuelCost(const int miles, const int trips)const // x trips
 } // calcFuelCost
 
 
-int calcNumAttendants(void) // single trip
+int Plane::calcNumAttendants(void)const // single trip
 {
-  return ciel(passengers / 100); // flight attendant per 100 possible passengers
+  return ceil(passengers / 100); // flight attendant per 100 possible passengers
 } // numAttendants()
 
 
-double Plane::calcAttendantCost(const double hours; int trips)const // x trips
+double Plane::calcAttendantCost(const int hours, int trips)const // x trips
 {
   int attendants = calcNumAttendants();
   return attendants * 30 * hours * trips; // wage = $30 / hour
 } // calcAttendantCost()
 
 
-double Plane::calcPilotCost(const int trips)const // x trips
+int Plane::calcNumPilots(void)const // single trip
+{
+  return 2;
+} // calcNumPilots()
+
+
+double Plane::calcPilotCost(const int hours, const int trips)const // x trips
 {
   int pilots = calcNumPilots(); 
   return pilots * 100 * hours * trips; // wage = $100 / hour

@@ -1,4 +1,9 @@
-// Author: Sean Davis 
+/* 
+ * File:   main.cpp
+ * Author: l0v379o8
+ *
+ * Created on May 3, 2015, 1:38 PM
+ */
 
 #include <iostream>
 #include <stdlib.h>
@@ -34,6 +39,24 @@ void determineAirportTraffic(const Vector *cities)
 }  // determinAirportTraffic()
 
 
+void displayPlaneInformation(const Plane *planes)
+{
+    
+} // displayPlaneInformation
+
+
+void addPlaneInformation(const Plane *planes)
+{
+
+} // addPlaneInformation()
+
+
+void determineBestPlane(const Plane *planes)
+{
+
+} // determineBestPlane())
+
+
 int getChoice()
 {
   int choice;
@@ -56,7 +79,7 @@ int getChoice()
 }  // getChoice()  
 
 
-void run(const Vector *cities)
+void run(const Vector *cities, const Plane *planes)
 {
   int choice;
   
@@ -73,6 +96,15 @@ void run(const Vector *cities)
     else  // Done or determine traffic
       if (choice == 2)
         determineAirportTraffic(cities);
+      else // Done or determine plane information
+        if (choice == 3)
+          displayPlaneInformation(planes);
+        else // Done or add plane info
+          if (choice == 4)
+            addPlaneInformation(planes);
+          else // Done or determine best plane
+            if (choice == 5)
+              determineBestPlane(planes);
   } while(choice != 0);
 }  // run())
 
@@ -80,6 +112,7 @@ void run(const Vector *cities)
 int main(int argc, char** argv) 
 {
   Vector cities;
+  Plane planes;
   cities.readCities();
   cities.readAirports();
   cities.cleanCities();
@@ -87,6 +120,6 @@ int main(int argc, char** argv)
 //  for(int i = 0; i < cities.count; i++)
 //    cout << "1\n" << cities.cityArray[i].airport << ' ' << cities.cityArray[rand() % cities.count].airport << endl;
 //  printf("%s %s %lf %lf\n", cities.cityArray[i].name, cities.cityArray[i].airport, cities.cityArray[i].latitude, cities.cityArray[i].longitude);
-  run(&cities);
+  run(&cities, &planes);
   return 0;
 } // main())

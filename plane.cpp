@@ -4,6 +4,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <cmath>
+#include <iomanip>
 #include "plane.h"
 using namespace std;
   
@@ -26,25 +27,40 @@ Plane::~Plane() // destruct plane
 } // ~Plane()
 
 
-void Plane::readPlane() // reads in a plane
+void Plane::readPlane(ifstream &inf) // reads in a plane // reads in a plane
 {
-  
+  inf.open("planes.dat", ios::in | ios::binary);
+
+  inf.read((char*)(&name), sizeof(name));
+  inf.read((char*)(&passengers), sizeof(passengers));
+  inf.read((char*)(&range), sizeof(range));
+  inf.read((char*)(&speed), sizeof(speed));
+  inf.read((char*)(&fuel), sizeof(fuel));
+  inf.read((char*)(&price), sizeof(price));
 } // readPlane()
 
 
 ostream& operator<< (ostream& os, const Plane &rhs) // displayPlaneInformation()
-{
-  
+{ // Edit more!!!
+  os << rhs.name 
+          << rhs.passengers 
+          << rhs.range 
+          << rhs.fuel 
+          << rhs.range / rhs.fuel 
+          << rhs.fuel * rhs.jetFuelPrice / rhs.range 
+          << rhs.price
+          << endl;
+  return os;
 } // operator<<
 
 
-void addPlaneInformation() // addPlaneInformation() ???????????????????????????????????????????
+void addPlaneInformation() // addPlaneInformation() ????????????????????????????
 {
   
 } // addPlaneInformation() 
 
 
-double Plane::calcTotalCost(const int passengrs, const int miles) // x trips determineBestPlane()
+double Plane::calcTotalCost(const int passengrs, const int miles) // x trips dBP
 {
   double hours = calcFlightTime(miles);
   int trips = calcNumTrips(miles);
@@ -101,7 +117,7 @@ double Plane::calcPilotCost(const int hours, const int trips)const // x trips
 } // calcPilotCost()
 
 
-double Plane::calcMaintenanceCost(const double hours, const int trips)const // x trips
+double Plane::calcMaintenanceCost(const double hours, const int trips)const //xt
 {
   return 25 * price * hours * trips; // .0025% * price * 10^6 * hours * trips
 } // calcMaintenanceCost

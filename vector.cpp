@@ -128,3 +128,18 @@ void Vector::resize()
   cityArray = temp;
 }  // resize()
 
+
+int Vector::readPlanes()
+{
+  int numPlanes = 0;
+  ifstream f;
+  
+  while(!f.eof())
+  {
+    planeArray[numPlanes++].readPlane(f);
+  } // while more in file
+  
+  numPlanes--;  
+  return numPlanes;
+}
+

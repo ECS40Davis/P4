@@ -50,3 +50,4 @@ Helpful Hints:
 - Creating static const class variables: http://stackoverflow.com/questions/17056882/c-static-const-member-variable-usage
  - static var: will hold a value between different objects of the same class
  - const var: will not change
+- Opening and reading binary files: http://www.cplusplus.com/forum/beginner/38595/

@@ -63,19 +63,23 @@ void addPlaneInformation() // addPlaneInformation() ????????????????????????????
   getline(cin,name);
 
   cout<<"Passengers: ";
-  //cin>>passengers;
+  cin>>passengers;
   getline(cin,passengers);
 
   cout<<"Fuel capacity (in U.S. gallons): ";
-  getline(cin, fuelCap);
+  cin>>fuel;
+  getline(cin, fuel);
 
   cout<<"Range (in miles): ";
+  cin>>range;
   getline(cin, range);
 
   cout<<"Speed (in mph): ";
+  cin>>speed;
   getline(cin, speed);
 
   cout<<"Price: ";
+  cin>>price;
   getline(cin, price);
 
   fout<<name<<endl;   //send to file

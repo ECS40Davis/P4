@@ -57,6 +57,38 @@ ostream& operator<< (ostream& os, const Plane &rhs) // displayPlaneInformation()
 void addPlaneInformation() // addPlaneInformation() ????????????????????????????
 {
   
+  inf.open("planes.dat", ios::app); //opens file for append
+  
+  cout<<"Name: ";
+  getline(cin,name);
+
+  cout<<"Passengers: ";
+  //cin>>passengers;
+  getline(cin,passengers);
+
+  cout<<"Fuel capacity (in U.S. gallons): ";
+  getline(cin, fuelCap);
+
+  cout<<"Range (in miles): ";
+  getline(cin, range);
+
+  cout<<"Speed (in mph): ";
+  getline(cin, speed);
+
+  cout<<"Price: ";
+  getline(cin, price);
+
+  fout<<name<<endl;   //send to file
+  fout<<passengers<<endl;
+  fout<<fuelCap<<endl;
+  fout<<range<<endl;
+  fout<<speed<<endl;
+  fout<<price<<endl;
+
+  fout.close( );       //close file
+  assert(!fout.fail( ));
+  return 0;
+  
 } // addPlaneInformation() 
 
 

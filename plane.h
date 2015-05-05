@@ -30,7 +30,7 @@ private:
 public:
   Plane(); // default plane
   ~Plane(); // destruct plane
-  void readPlane(); // reads in a plane
+  void readPlane(ifstream &inf); // reads in a plane
   friend ostream & operator << (ostream& os, const Plane &rhs); // displayPlaneInformation()
   void addPlaneInformation(); // addPlaneInformation()
   double calcTotalCost(const int passengers, const int miles); // x trips determineBestPlane()

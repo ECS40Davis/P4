@@ -1,7 +1,9 @@
 // Authors: Jessica and Nathaniel
 #include <iostream>
 #include <fstream>
+#include <cstdio>
 #include <cstring>
+#include <sstream>
 #include <cstdlib>
 #include <cmath>
 #include <iomanip>
@@ -29,8 +31,6 @@ Plane::~Plane() // destruct plane
 
 void Plane::readPlane(ifstream &inf) // reads in a plane // reads in a plane
 {
-  inf.open("planes.dat", ios::in | ios::binary);
-
   inf.read((char*)(&name), sizeof(name));
   inf.read((char*)(&passengers), sizeof(passengers));
   inf.read((char*)(&range), sizeof(range));
@@ -42,56 +42,28 @@ void Plane::readPlane(ifstream &inf) // reads in a plane // reads in a plane
 
 ostream& operator<< (ostream& os, const Plane &rhs) // displayPlaneInformation()
 { // Edit more!!!
-  os << rhs.name 
-          << rhs.passengers 
-          << rhs.range 
-          << rhs.fuel 
-          << rhs.range / rhs.fuel 
+  os << left << setw(13) << rhs.name 
+          << fixed << setw(6) << rhs.passengers;
+  
+  string r = rhs.addCommas(rhs.range);
+  os << left << setw(6) << r
+          << left << setw(6) << rhs.speed;
+  
+  string f = rhs.addCommas(rhs.fuel);
+  os << right << setw(6) << f
+          << setw(6) << setprecision(3) << (double)rhs.range / rhs.fuel 
+          << setw(6) << setprecision(2) 
           << rhs.fuel * rhs.jetFuelPrice / rhs.range 
-          << rhs.price
-          << endl;
+          << setw(2) << "$"
+          << right << setw(5) << setprecision(1) << rhs.price / 1000000.0
+          << left << endl;
   return os;
 } // operator<<
 
 
-void addPlaneInformation() // addPlaneInformation() ????????????????????????????
+void Plane::addPlaneInformation() // addPlaneInformation() ????????????????????????????
 {
-  
-  inf.open("planes.dat", ios::app); //opens file for append
-  //assert (!fout.fail( )); 
-  cout<<"Name: ";
-  getline(cin,name);
-
-  cout<<"Passengers: ";
-  cin>>passengers;
-  getline(cin,passengers);
-
-  cout<<"Fuel capacity (in U.S. gallons): ";
-  cin>>fuel;
-  getline(cin, fuel);
-
-  cout<<"Range (in miles): ";
-  cin>>range;
-  getline(cin, range);
-
-  cout<<"Speed (in mph): ";
-  cin>>speed;
-  getline(cin, speed);
-
-  cout<<"Price: ";
-  cin>>price;
-  getline(cin, price);
-
-  fout<<name<<endl;   //send to file
-  fout<<passengers<<endl;
-  fout<<fuelCap<<endl;
-  fout<<range<<endl;
-  fout<<speed<<endl;
-  fout<<price<<endl;
-
-  fout.close( );       //close file
-  //assert(!fout.fail( ));
-  
+    int i;
 } // addPlaneInformation() 
 
 
@@ -158,7 +130,23 @@ double Plane::calcMaintenanceCost(const double hours, const int trips)const //xt
 } // calcMaintenanceCost
 
 
-const char* Plane::getName(const Plane &plane)const // determineBestPlane()
+const char* Plane::getName()const // determineBestPlane()
 {
   
 } // getName()
+
+
+string Plane::addCommas(int value)const
+{
+    stringstream ss;
+    ss << value;
+    string commas = ss.str();
+    int insertPosition = commas.length() - 3;
+    while (insertPosition > 0)
+    {
+        commas.insert(insertPosition, ",");
+        insertPosition -= 3;
+    } // while number is still big
+    
+    return commas;
+} // addCommas())

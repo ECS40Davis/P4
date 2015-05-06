@@ -34,7 +34,8 @@ public:
   friend ostream & operator << (ostream& os, const Plane &rhs); // displayPlaneInformation()
   void addPlaneInformation(); // addPlaneInformation()
   double calcTotalCost(const int passengers, const int miles); // x trips determineBestPlane()
-  const char* getName(const Plane &plane)const; // determineBestPlane()
+  const char* getName()const; // determineBestPlane()
+  string addCommas(int value)const; // adds commas to integers
 }; // class Plane
 
 #endif // PLANE_H

@@ -3,7 +3,6 @@
 // Author Sean Davis
 
 #include "city.h"
-#include "plane.h"
 
 class Vector
 {
@@ -12,9 +11,6 @@ class Vector
   int size;
   int count;
   void resize();
-  
-  // Plane Declaration
-  Plane *planeArray;
   
 public:
   Vector();
@@ -26,9 +22,8 @@ public:
   int findAirport(const char *airport) const;
   void readAirports();
   void readCities();
-  
-  // For Plane
-  int readPlanes();
+  int calcPassengers(const int index1, const int index2)const;
+  int calcMiles(const int index1, const int index2)const;
 };  // class Vector
 
 #endif	// VECTOR_H 

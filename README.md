@@ -51,3 +51,6 @@ Helpful Hints:
  - static var: will hold a value between different objects of the same class
  - const var: will not change
 - Opening and reading binary files: http://www.cplusplus.com/forum/beginner/38595/
+- Adding commas to numbers:
+ - Inserting commas: http://stackoverflow.com/questions/7276826/c-format-number-with-commas
+ - Int2String: http://stackoverflow.com/questions/11751486/qt-c-aggregate-stdstringstream-ss-has-incomplete-type-and-cannot-be-define

@@ -37,10 +37,10 @@ Outline:
 Progress:
 - Created Outline
 - Created Plane Stubs
-- plane.ccp and .h are debugged so they can compile but are not tested
+- displayPlaneInformation() functional
 
 To do:
-- Create Vector Stubs
+- Complete addPlaneInfo
 - Modify City's calcDistance
 
 Fixed Errors:

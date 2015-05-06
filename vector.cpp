@@ -129,17 +129,13 @@ void Vector::resize()
 }  // resize()
 
 
-int Vector::readPlanes()
-{
-  int numPlanes = 0;
-  ifstream f;
-  
-  while(!f.eof())
+  int Vector::calcPassengers(const int index1, const int index2)const
   {
-    planeArray[numPlanes++].readPlane(f);
-  } // while more in file
+      return 0;
+  } // calcPassengers())
   
-  numPlanes--;  
-  return numPlanes;
-}
-
+  
+  int Vector::calcMiles(const int index1, const int index2)const
+  {
+      return 0;
+  } // calcMiles

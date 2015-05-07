@@ -131,11 +131,11 @@ void Vector::resize()
 
   int Vector::calcPassengers(const int index1, const int index2)const
   {
-      return 0;
+      return cityArray[index1].calcPassengers( &cityArray[index2]);;
   } // calcPassengers())
   
   
   int Vector::calcMiles(const int index1, const int index2)const
   {
-      return 0;
+      return cityArray[index1].calcMiles( &cityArray[index2]);;
   } // calcMiles

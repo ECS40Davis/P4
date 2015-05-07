@@ -1,10 +1,3 @@
-/* 
- * File:   main.cpp
- * Author: l0v379o8
- *
- * Created on May 3, 2015, 1:38 PM
- */
-
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
@@ -44,7 +37,7 @@ void determineAirportTraffic(const Vector *cities)
 void displayPlaneInformation(const Plane planes[10], const int numPlanes)
 {
    cout << "\nPlane Information" << endl; 
-   cout << setw(13) << left << "Name"
+   cout << setw(12) << left << "Name"
             << setw(6) << "Pass." 
             << setw(6) << "Range"
             << setw(6) << "Speed"
@@ -60,16 +53,14 @@ void displayPlaneInformation(const Plane planes[10], const int numPlanes)
 
 void addPlaneInformation(Plane planes[10], int numPlanes)
 {
-    numPlanes++;
-    // add cin stuff...
-    planes->addPlaneInformation(); //()<-cin stuff
+    planes[numPlanes++].addPlaneInformation(); //()<-cin stuff
 } // addPlaneInformation()
 
 
 void determineBestPlane(const Vector *cities, Plane planes[10], const int numPlanes)
 {
-  int minCostPlane = 0;
-  int minPlaneElement = 0;
+  double minCostPlane = 0;
+  int minCostElement = 0;
   char airport1[80], airport2[80];
   cout << "\nPlease enter two airport abbreviations (XXX XXX): ";
   cin >> airport1 >> airport2;
@@ -77,20 +68,29 @@ void determineBestPlane(const Vector *cities, Plane planes[10], const int numPla
   int index1 = cities->findAirport(airport1);
   int index2 = cities->findAirport(airport2);
   
-  int passengers = cities->calcPassengers(index1, index2);
-  int miles = cities->calcMiles(index1, index2);
-  
-  for (int i = 0; i < numPlanes; i ++)
+  if (index1 >= 0 && index2 >= 0)
   {
-      double j = planes[i].calcTotalCost(passengers, miles);
-      if (j < minCostPlane)
-      {
-          minPlaneElement = i;
-      }// if it is min
+    int passengers = cities->calcPassengers(index1, index2);
+    int miles = cities->calcMiles(index1, index2);
+//    cout << "passengers: " << passengers << "\tmiles: " << miles << endl;
+    
+    minCostPlane = planes[0].calcTotalCost(passengers, miles);
+//    cout << "minCostPlane: " << minCostPlane << endl;
+//    cout << "numPlanes: " << numPlanes << "\n\n";
+    
+    for (int i = 1; i < numPlanes; i ++)
+    {
+        double j = planes[i].calcTotalCost(passengers, miles);
+        if (j < minCostPlane)
+        {
+            minCostElement = i;
+        }// if it is min
       
-  } // check all planes for their min value
+    } // check all planes for their min value
+    planes[minCostElement].getName(passengers, miles);
+
+  } // if the planes exist
   
-  planes[minCostPlane].getName();
 } // determineBestPlane())
 
 
@@ -105,8 +105,8 @@ int getChoice()
     cout << "1. Determine distance and passengers between two airports.\n";
     cout << "2. Determine all traffic from one airport.\n";
     cout << "3. Display planes information.\n";
-    cout << "4. Add plan information.\n";
-    cout << "5. Determine best plan between two airports.\n\n";
+    cout << "4. Add plane information.\n";
+    cout << "5. Determine best plane between two airports.\n\n";
     cout << "Your choice (0 - 5): ";
     cin >> choice;
     cin.ignore(1000, '\n');
